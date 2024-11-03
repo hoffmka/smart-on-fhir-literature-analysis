@@ -77,5 +77,6 @@ resultset_df = pd.concat([resultset_df, missing_entries_filtered], ignore_index=
 print(resultset_df['Title'].duplicated().sum())  # Number of duplicate titles in resultset_df
 
 #####################################################
-# Write to csv
+# Write to csv and excel
 resultset_df.to_csv('data/merged_data.csv', index=False)
+resultset_df.to_excel('data/merged_data.xlsx', index=False)
