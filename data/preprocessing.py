@@ -78,4 +78,4 @@ print(resultset_df['Title'].duplicated().sum())  # Number of duplicate titles in
 
 #####################################################
 # Write to csv
-resultset_df.to_csv('review/results/resultset.csv', index=False)
+resultset_df.to_csv('data/merged_data.csv', index=False)
