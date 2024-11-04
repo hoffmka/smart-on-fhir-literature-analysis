@@ -4,11 +4,14 @@ import pandas as pd
 scopus_df = pd.read_csv('data/scopus.csv')
 wos_df = pd.read_excel('data/webofscience.xls')
 pubmed_df = pd.read_csv('data/pubmed.csv')
+ieee_df = pd.read_csv('data/ieee.csv')
 
 # Rename columns
 wos_df = wos_df.rename(columns={'Author Full Names': 'Author full names', 'Article Title': 'Title', 'Publication Year': 'Year', 'Language': 'Language of Original Document'})
 
 pubmed_df = pubmed_df.rename(columns={'Journal/Book': 'Journal', 'Publication Year': 'Year'})
+
+ieee_df = ieee_df.rename(columns={'Document Title': 'Title', 'Authors': 'Author full names', 'Publication Year': 'Year'})
 
 ######################################################
 # Merging results of Scopus, Web of Science and PubMed
@@ -75,6 +78,26 @@ resultset_df = pd.concat([resultset_df, missing_entries_filtered], ignore_index=
 
 # check for dublicate titles
 print(resultset_df['Title'].duplicated().sum())  # Number of duplicate titles in resultset_df
+
+######################################################
+# Merge ieee entries to scorpus+pubmed
+# Create boolean masks for DOI and Title
+doi_ieee_present_in_resultset = ieee_df['DOI'].isin(resultset_df['DOI'])
+title_ieee_present_in_resultset = ieee_df['Title'].str.lower().isin(resultset_df['Title'].str.lower())
+
+# Combine the two conditions
+either_present = doi_ieee_present_in_resultset | title_ieee_present_in_resultset
+
+# Create a new column in wos_df indicating if either DOI or Title is present in scopus_df
+ieee_df['either_present'] = either_present
+
+# Print the rows where neither DOI nor Title is present
+missing_entries_ieee = ieee_df[~either_present]
+print("Entries in ieee_df where neither DOI nor Title is present in resultset_df:")
+print(missing_entries_ieee)
+
+# RESULT: All entries of ieee_df are present in resultset_df
+############################################################
 
 #####################################################
 # Write to csv and excel
