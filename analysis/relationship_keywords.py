@@ -1,4 +1,6 @@
 import pandas as pd
+from collections import Counter
+import ast
 
 # Read results from csv
 resultset_df = pd.read_csv('data/screening.csv')
@@ -9,14 +11,6 @@ resultset_df['Author Keywords'] = resultset_df['Author Keywords'].fillna(results
 # check how many records are available without keywords
 resultset_df['Author Keywords'].isna().sum()
 # n = 30
-
-
-
-############################################################
-# Write to csv and excel
-df_reset.to_excel('data/keywords.xlsx', index=False)
-df_reset.to_csv('data/keywords.csv', index=False)
-
 
 data = {
     'article': resultset_df['Title'],
@@ -40,6 +34,22 @@ def harmonize_keywords(keyword_entry):
 
 # Apply the harmonization function
 df['harmonized_keywords'] = df['keywords'].apply(harmonize_keywords)
+
+# Flatten the list of all keywords
+all_keywords = [keyword for sublist in df['harmonized_keywords'] for keyword in sublist]
+
+# Count occurrences of each keyword
+keyword_counts = Counter(all_keywords)
+
+# Convert to DataFrame for easy viewing
+keyword_counts_df = pd.DataFrame(keyword_counts.items(), columns=['Keyword', 'Count']).sort_values(by='Count', ascending=False)
+
+print(keyword_counts_df)
+
+############################################################
+# Write to csv and excel
+keyword_counts_df.to_excel('data/keywords.xlsx', index=False)
+keyword_counts_df.to_csv('data/keywords.csv', index=False)
 
 ###############################
 # Create a Co-Occurrence Matrix
