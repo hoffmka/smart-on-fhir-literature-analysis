@@ -99,7 +99,11 @@ print(missing_entries_ieee)
 # RESULT: All entries of ieee_df are present in resultset_df
 ############################################################
 
-#####################################################
+############################################################
+# Exclude records that are not written in German and English
+resultset_df = resultset_df[resultset_df['Language of Original Document'].isin(['German', 'English'])]
+# 4 records are excluded because they are written in Chinese
+
+############################################################
 # Write to csv and excel
-resultset_df.to_csv('data/merged_data.csv', index=False)
-resultset_df.to_excel('data/merged_data.xlsx', index=False)
+resultset_df.to_excel('data/overall.xlsx', index=False)
