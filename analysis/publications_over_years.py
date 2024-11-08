@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # Sample DataFrame (Replace this with your actual DataFrame)
 # Assuming 'pub_year' is the column containing the years of publication
-df = pd.read_csv('data/merged_data.csv')
+df = pd.read_csv('data/overall.csv')
 
 # Count the number of publications per year
 publication_counts = df['Year'].value_counts().sort_index()

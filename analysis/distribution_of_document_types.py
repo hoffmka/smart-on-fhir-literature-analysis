@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Read results from csv
-resultset_df = pd.read_csv('data/merged_data.csv')
+resultset_df = pd.read_csv('data/overall.csv')
 
 # Harmonize Document types from different data sources
 resultset_df.loc[resultset_df['Document Type'] == 'Proceedings Paper'] = 'Conference paper'

@@ -107,3 +107,4 @@ resultset_df = resultset_df[resultset_df['Language of Original Document'].isin([
 ############################################################
 # Write to csv and excel
 resultset_df.to_excel('data/overall.xlsx', index=False)
+resultset_df.to_csv('data/overall.csv', index=False)
