@@ -1,4 +1,4 @@
-# smart-on-fhir-literature-analysis
+# SMART on FHIR: An Introductory Literature Overview
 
 ## Description
 

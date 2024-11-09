@@ -48,9 +48,14 @@ fig.gca().add_artist(centre_circle)
 plt.text(0, 0, "Publication Type\nDistribution", ha='center', va='center', fontsize=12, weight='bold')
 
 # Add a description for the Others category
-text_x = 0.0  # X position for the text
-text_y = -1.5  # Y position for the text
+text_x = 1.0  # X position for the text
+text_y = 1.5  # Y position for the text
 plt.text(text_x, text_y, "* includes: Editorial, Letter, Short survey, and Note", ha='center', va='center', fontsize=8)
+
+# Add a description for the Others category
+text2_x = 0.0  # X position for the text
+text2_y = -1.2  # Y position for the text
+plt.text(text2_x, text2_y, "Overall (n=699)", ha='center', va='center', fontsize=8)
 
 # Draw lines from the pie edges to the labels
 for i, wedge in enumerate(wedges):
