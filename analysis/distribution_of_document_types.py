@@ -30,11 +30,11 @@ doc_counts = doc_counts.reindex(custom_order, fill_value=0)
 
 # Calculate percentages and prepare labels
 total = doc_counts.sum()
-labels = [f"{label} ({round(100 * count / total)}%)" for label, count in zip(doc_counts.index, doc_counts)]
+labels = [f"{label} ({count})" for label, count in zip(doc_counts.index, doc_counts)]
 labels[-1] += " *"  # Add asterisk to "Others"
 
 # Define discrete colors for each section
-colors = ['#0069b498', '#84cfed98', '#00824498', '#cd161998', '#e8412c98', '#72777798']  # Custom colors for each category
+colors = ['#f0826298', '#f7a94198', '#00824498', '#cd161998', '#e8412c98', '#72777798']  # Custom colors for each category
 
 # Plot the pie chart
 fig, ax = plt.subplots()

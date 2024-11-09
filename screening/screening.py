@@ -21,11 +21,16 @@ df_reset = df_reset[cols]
 # Drop unneccesary columns
 df_reset = df_reset.drop(columns=['Author full names', 'Author(s) ID', 'Volume', 'Issue', 'Art. No.', 'Page start', 'Page end', 'Page count', 'Funding Texts', 'Correspondence Address', 'Sponsors', 'Conference code', 'ISSN', 'ISBN', 'CODEN', 'PubMed ID', 'Language of Original Document', 'EID', 'Link', 'Source'])
 
-############################################################
-# Write to csv and excel
-df_reset.to_excel('data/screening.xlsx', index=False)
-df_reset.to_csv('data/screening.csv', index=False)
 
+############################################################
+# Write to file
+df_reset.to_excel('screening/screening.xlsx', index=False)
+# Books and Book chapter (n=59)
+df_books = df_reset[df_reset["Document Type"].isin(["Book", "Book chapter"])]
+df_books.to_excel('screening/screening_books-chapter.xlsx', index=False)
+# Review (n=114)
+df_review = df_reset[df_reset["Document Type"].isin(["Review"])]
+df_review.to_excel('screening/screening_review.xlsx', index=False)
 
 # Inclusion and exclusion keywords
 inclusion_keywords = ["SMART on FHIR", "FHIR", "clinical decision support", "Infrastructure", "implementation", "deployment"]
