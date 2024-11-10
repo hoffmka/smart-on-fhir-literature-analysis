@@ -17,13 +17,3 @@ The [key_literature.csv](results/key_literature.csv), located in the [results di
 [The resulting key literature overview can be obtained here.](KEY_LITERATURE_OVERVIEW.md)
 
 To be done .. include some meta analysis figures.
-
-## Quickstart
-To bootstrap the project, create a virtual environment and install the requirements from ``requirements.txt``:
-
-```shell
-virtualenv env
-source path/to/env/bin/activate
-cd path/to/smart-on-fhir-literature-analysis/repository
-pip install -r requirements.txt
-```
