@@ -3,21 +3,22 @@ import pandas as pd
 # Read results from files
 df_books = pd.read_excel('screening/screening_books-chapter_done.xlsx')
 df_reviews = pd.read_excel('screening/screening_reviews_done.xlsx')
+df_articles = pd.read_excel('screening/screening_articles_done.xlsx')
 
 # Concatinate
-df = pd.concat([df_books, df_reviews], ignore_index=True)
+df = pd.concat([df_books, df_reviews, df_articles], ignore_index=True)
 df.to_csv('results/screened_literature.csv')
 
 
 # Excluded
-df_excluded = df[df['Included']==0] # 144 records
+df_excluded = df[df['Included']==0] # 187 records
 print(df_excluded)
 # Included
-df_included = df[df['Included']==1] # 29 records
+df_included = df[df['Included']==1] # 52 records
 print(df_included)
 
 # Key literature elements
-df_key_literature = df_included[df_included['further excluded']!=1] # 9 elements
+df_key_literature = df_included[df_included['further excluded']!=1] # 30 elements
 print(df_key_literature)
 df_key_literature.to_csv('results/key_literature.csv')
 
