@@ -30,8 +30,4 @@ df_books = df_reset[df_reset["Document Type"].isin(["Book", "Book chapter"])]
 df_books.to_excel('screening/screening_books-chapter.xlsx', index=False)
 # Review (n=114)
 df_review = df_reset[df_reset["Document Type"].isin(["Review"])]
-df_review.to_excel('screening/screening_review.xlsx', index=False)
-
-# Inclusion and exclusion keywords
-inclusion_keywords = ["SMART on FHIR", "FHIR", "clinical decision support", "Infrastructure", "implementation", "deployment"]
-exclusion_keywords = ["machine learning", "veterinary", "sports", "music"]
+df_review.to_excel('screening/screening_reviews.xlsx', index=False)
