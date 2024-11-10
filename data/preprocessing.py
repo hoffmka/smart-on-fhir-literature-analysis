@@ -1,6 +1,6 @@
 import pandas as pd
 
-# Read results from csv
+# Read results from file
 scopus_df = pd.read_csv('data/scopus.csv')
 wos_df = pd.read_excel('data/webofscience.xls')
 pubmed_df = pd.read_csv('data/pubmed.csv')

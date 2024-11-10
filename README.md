@@ -6,6 +6,7 @@ To add a description
 
 ![Flow chart of literature screening.](process.svg)
 
+
 ## Quickstart
 To bootstrap the project, create a virtual environment and install the requirements from ``requirements.txt``:
 
