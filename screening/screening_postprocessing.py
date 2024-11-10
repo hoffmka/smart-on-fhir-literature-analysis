@@ -20,13 +20,14 @@ df_key_literature.to_csv('results/key_literature.csv')
 
 
 # Convert DataFrame to Markdown format
+df_key_literature = df_key_literature[['Authors', 'Title', 'Year', 'DOI', 'Document Type', 'Cited by']]
 markdown_table = df_key_literature.to_markdown(index=False)
 
 # Print the Markdown table (or save it to a file if needed)
 print(markdown_table)
 
 # Optionally, save to a README.md file
-with open('README.md', 'a') as file:  # 'a' to append or 'w' to overwrite
-    file.write("\n## Data Table\n\n")
+with open('KEY_LITERATURE_OVERVIEW.md', 'a') as file:  # 'a' to append or 'w' to overwrite
+    file.write("\n## KEY LITERATURE OVERVIEW\n\n")
     file.write(markdown_table)
     file.write("\n")
